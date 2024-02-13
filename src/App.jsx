@@ -6,8 +6,8 @@ function App() {
   return (
     <>
       <div>
-      <h1>Astronomy Picture of the Day</h1>
-      <ApodItem />  
+        <h1>Astronomy Picture of the Day</h1>
+          <ApodItem />  
       </div>
     </>
   )

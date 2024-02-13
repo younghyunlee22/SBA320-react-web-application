@@ -9,8 +9,8 @@ const initialState = {
 
 export const fetchApodData = createAsyncThunk(
   "apod/fetchApodData",
-  async () => {
-    const response = await fetchAPOD();
+  async ({ startDate, endDate }) => {
+    const response = await fetchAPOD({ startDate, endDate });
     return response;
   }
 );
