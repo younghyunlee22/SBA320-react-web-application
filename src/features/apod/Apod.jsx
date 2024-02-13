@@ -7,16 +7,12 @@ const ApodItem = () => {
   const { data, loading, error } = useSelector((state) => state.apod);
 
   useEffect(() => {
-    dispatch(fetchApodData());
-  }, [dispatch]);
-
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-
-  if (error) {
-    return <p>Error: {error}</p>;
-  }
+    try {
+        dispatch(fetchApodData());
+      } catch (err) {
+      console.log(err)}
+    }, [dispatch]
+  )
 
   return (
     <div>
