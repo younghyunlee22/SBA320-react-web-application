@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchApodData } from "./apodSlice";
 import DateSelection from "./DateSelection";
 import Card from "../../components/Card";
+import SelectedCard from "../../components/SelectedCard";
 
 const ApodItem = () => {
   const dispatch = useDispatch();
@@ -43,20 +44,10 @@ const ApodItem = () => {
     <>
       <DateSelection onDateChange={handleDateChange} /> <br />
       <p>Select a date or a date range to see the Astronomy Picture of the Day</p>
+      <p>Click to see the picture in detail</p>
       <div className="apod-item">
       {selectedCard ? (
-        <div className="apod-details">
-          <img
-            className="apod-image"
-            src={selectedCard.url}
-            alt={selectedCard.title}
-          />
-          {selectedCard.copyright && <p>&copy; {selectedCard.copyright}</p>}
-          <h2>{selectedCard.title}</h2>
-          <p>{selectedCard.date}</p>
-          <p className="apod-explanation">{selectedCard.explanation}</p>
-          <button className="go-back" onClick={handleGoBack}>Go Back to List</button>
-        </div>
+        <SelectedCard selectedCard={selectedCard} onGoBack={handleGoBack} />
       ) : (
         Array.isArray(data) ? (
           // If data is an array, map through it and render cards
@@ -75,7 +66,6 @@ const ApodItem = () => {
             className="apod-card"
             onClick={() => handleCardClick(data)}
           >
-            <p> Click to see the picture in detail</p>
             <Card data={data} />
           </div>
         )
