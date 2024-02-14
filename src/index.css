@@ -108,3 +108,7 @@ button:focus-visible {
   background-color: purple;
   color: wheat;
 }
+
+p {
+  color: darkolivegreen;
+}
