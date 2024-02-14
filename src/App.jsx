@@ -1,4 +1,4 @@
-import ApodItem from "./features/apod/Apod"
+import ApodItem from "./features/apod/ApodItem"
 import './App.css'
 
 function App() {

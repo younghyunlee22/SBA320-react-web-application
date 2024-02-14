@@ -22,6 +22,10 @@ const ApodItem = () => {
     setSelectedCard(apodData);
   };
 
+  const handleGoBack = () => {
+    setSelectedCard(null);
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -36,9 +40,10 @@ const ApodItem = () => {
   }, [startDate, endDate, dispatch]);
 
   return (
-    <div className="apod-item">
+    <>
       <DateSelection onDateChange={handleDateChange} /> <br />
       <p>Click to see in detail</p>
+      <div className="apod-item">
       {selectedCard ? (
         <div className="apod-details">
           <img
@@ -50,6 +55,7 @@ const ApodItem = () => {
           <h2>{selectedCard.title}</h2>
           <p>{selectedCard.date}</p>
           <p className="apod-explanation">{selectedCard.explanation}</p>
+          <button className="go-back" onClick={handleGoBack}>Go Back to List</button>
         </div>
       ) : (
         Array.isArray(data) ? (
@@ -74,6 +80,7 @@ const ApodItem = () => {
         )
       )}
     </div>
+    </>
   );
 };
 
