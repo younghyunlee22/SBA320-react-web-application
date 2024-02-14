@@ -42,7 +42,7 @@ const ApodItem = () => {
   return (
     <>
       <DateSelection onDateChange={handleDateChange} /> <br />
-      <p>Click to see in detail</p>
+      <p>Select a date or a date range to see the Astronomy Picture of the Day</p>
       <div className="apod-item">
       {selectedCard ? (
         <div className="apod-details">
@@ -75,6 +75,7 @@ const ApodItem = () => {
             className="apod-card"
             onClick={() => handleCardClick(data)}
           >
+            <p> Click to see the picture in detail</p>
             <Card data={data} />
           </div>
         )
