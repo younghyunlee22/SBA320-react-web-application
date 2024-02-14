@@ -12,11 +12,13 @@ const DateSelection = ({ onDateChange }) => {
       if (name === 'startDate') {
         setStartDate(formattedDate);
       } else if (name === 'endDate') {
-        setEndDate(formattedDate);
+        setEndDate((prevEndDate) => {
+          onDateChange({ startDate, endDate: formattedDate });
+          return formattedDate;
+        });
       }
-      onDateChange({ startDate, endDate }); // Pass selected dates to parent
     }
-  };
+  }; 
 
   return (
     <div>
