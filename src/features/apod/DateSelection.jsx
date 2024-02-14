@@ -4,10 +4,13 @@ const DateSelection = ({ onDateChange }) => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
 
+   // toISOString() => YYYY-MM-DDTHH:mm:ss.sssZ
+  const today = new Date().toISOString().slice(0, 10);
+  const minDate = '1995-06-16';
+
   const handleDateChange = (event) => {
-    const { target: { name, value } } = event;
+    const { name, value } = event.target;
     if (name === 'startDate' || name === 'endDate') {
-      // Format date to YYYY-MM-DD
       const formattedDate = new Date(value).toISOString().slice(0, 10);
       if (name === 'startDate') {
         setStartDate(formattedDate);
@@ -29,6 +32,8 @@ const DateSelection = ({ onDateChange }) => {
         id="startDate"
         value={startDate}
         onChange={handleDateChange}
+        min={minDate}
+        max={today}
       />
       {" "}
       <label htmlFor="endDate">End Date:</label>
@@ -38,6 +43,8 @@ const DateSelection = ({ onDateChange }) => {
         id="endDate"
         value={endDate}
         onChange={handleDateChange}
+        min={minDate}
+        max={today}
       />
     </div>
   );

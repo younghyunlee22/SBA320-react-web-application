@@ -8,9 +8,15 @@ export const fetchApodData = createAsyncThunk('apod/fetchApodData', async ({ sta
   try {
     let url = `${BASE_URL}?api_key=${API_KEY}`;
 
-    if (startDate && endDate) {
-      url += `&start_date=${startDate}&end_date=${endDate}`;
+    if (startDate) {
+      // Add start_date parameter if startDate is provided
+      url += `&start_date=${startDate}`;
+
+      // Add end_date parameter if endDate is provided
+      if (endDate) {
+        url += `&end_date=${endDate}`;
       }
+    }
 
     const response = await axios.get(url);
     return response.data;
