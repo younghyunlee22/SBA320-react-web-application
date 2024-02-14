@@ -1,23 +1,25 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import fetchAPOD from "./apodAPI";
+import axios from "axios";
 
-const initialState = {
-  data: {},
-  loading: false,
-  error: null,
-};
+const API_KEY = import.meta.env.VITE_REACT_APP_APOD_API_KEY;
+const BASE_URL = "https://api.nasa.gov/planetary/apod";
 
-export const fetchApodData = createAsyncThunk(
-  "apod/fetchApodData",
-  async ({ startDate, endDate }) => {
-    const response = await fetchAPOD({ startDate, endDate });
-    return response;
+export const fetchApodData = createAsyncThunk('apod/fetchApodData', async ({ startDate, endDate }) => {
+  try {
+    const response = await axios.get(`${BASE_URL}?api_key=${API_KEY}&start_date=${startDate}&end_date=${endDate}`);
+    return response.data;
+  } catch (error) {
+    throw error;
   }
-);
+});
 
 const apodSlice = createSlice({
   name: "apod",
-  initialState,
+  initialState: {
+    data: [],
+    loading: false,
+    error: null,
+  },
   reducers: {},
   extraReducers: (builder) => {
     builder

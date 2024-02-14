@@ -7,7 +7,7 @@ function App() {
     <>
       <div>
         <h1>Astronomy Picture of the Day</h1>
-          <ApodItem />  
+          <ApodItem />            
       </div>
     </>
   )
