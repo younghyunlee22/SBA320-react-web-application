@@ -6,7 +6,13 @@ const BASE_URL = "https://api.nasa.gov/planetary/apod";
 
 export const fetchApodData = createAsyncThunk('apod/fetchApodData', async ({ startDate, endDate }) => {
   try {
-    const response = await axios.get(`${BASE_URL}?api_key=${API_KEY}&start_date=${startDate}&end_date=${endDate}`);
+    let url = `${BASE_URL}?api_key=${API_KEY}`;
+
+    if (startDate && endDate) {
+      url += `&start_date=${startDate}&end_date=${endDate}`;
+      }
+
+    const response = await axios.get(url);
     return response.data;
   } catch (error) {
     throw error;
