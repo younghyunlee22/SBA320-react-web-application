@@ -24,6 +24,10 @@ The web app follows a component-based architecture, with key components includin
 2. Install dependencies using `npm install`.
 3. Run the app with `npm start`.
 
+## Live Server
+
+[Visit the live server](https://starlit-kheer-dc6cfb.netlify.app/)
+
 ## Unsolved Problems
 
 Currently, users can only navigate back to the list by clicking the "Go Back to List" button. Implementing browser navigation (using the browser's back icon) for a more seamless user experience is a potential improvement.
