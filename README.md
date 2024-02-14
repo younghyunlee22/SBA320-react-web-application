@@ -10,13 +10,13 @@
 
 ## Approach
 
-The web app follows a component-based architecture, with key components including `ApodItem`, `DateSelection`, and `Card`.
+The web app follows a component-based architecture, with key components including `ApodItem`, `DateSelection`, `Card` and `SelectedCard`.
 
 - **Date Selection**: The user can select a date range using the `DateSelection` component.
 
 - **Card Display**: Astronomy Picture of the Day data is displayed in card format using the `Card` component. Users can click on a card to view detailed information.
 
-- **Detailed View**: Clicking on a card opens the detailed view, showing the selected image, copyright info if provided, title, date, and explanation. Users can go back to the card list using the "Go Back to List" button.
+- **Detailed View**: Clicking on a card opens the detailed view using the `SelectedCard` component, showing the selected image, copyright info if provided, title, date, and explanation. Users can go back to the card list using the "Go Back to List" button.
 
 ## Usage Instructions
 
